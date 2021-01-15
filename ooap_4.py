@@ -75,15 +75,15 @@ class GarageDoor: #получатель
 class SimpleRemoteControl:
     
     def __init__(self):
-        self.commands = list()
+        self.commands = list() #стек для отмены команд
     
     def execute(self, command):
         command.execute()
-        self.commands.append(command)
+        self.commands.append(command) #добавляет всегда в конец уже существующего стека
 
     def undo(self):
         if (len(self.commands) != 0):
-            self.commands.pop().undo()
+            self.commands.pop().undo() # функция pop() удаляет всегда с конца стека
         else:
             print('Нет команд для отмены')
             
